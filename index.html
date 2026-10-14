@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>СтройТех Блок-хаус — металлический сайдинг</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f4f6f5;
+    color: #222;
+    padding-bottom: 30px;
+  }
+
+  /* ==== ШАПКА ==== */
+  header {
+    background: #1e7a3c;
+    color: #fff;
+    padding: 20px 16px 22px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  header h1 {
+    font-size: 28px;
+    letter-spacing: 3px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  header h1 span { font-weight: 400; opacity: .85; letter-spacing: 2px; }
+  header .phone-big {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 8px 22px;
+    border: 2px solid rgba(255,255,255,.55);
+    border-radius: 40px;
+    transition: background .15s, border-color .15s;
+  }
+  header .phone-big:hover {
+    background: rgba(255,255,255,.15);
+    border-color: #fff;
+  }
+
+  /* ==== ТОНКАЯ ПЛАШКА НА ПОРТАЛ (ВВЕРХУ) ==== */
+  .portal-top {
+    max-width: 1400px;
+    margin: 14px auto 0;
+    padding: 0 24px;
+  }
+  .portal-top a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #dfe6e1;
+    border-left: 4px solid #0f5c8a;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: box-shadow .15s, border-color .15s;
+  }
+  .portal-top a:hover {
+    box-shadow: 0 4px 14px rgba(15,92,138,.12);
+    border-left-color: #1e7a3c;
+  }
+  .portal-top .icon { font-size: 16px; line-height: 1; }
+  .portal-top .sub {
+    color: #6b7770;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .portal-top .arrow { opacity: .6; }
+
+  /* ==== СЕТКА ==== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ==== КАРТОЧКА ==== */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 5px rgba(0,0,0,.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.15);
+  }
+  .card img {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    background: #fafafa;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+  }
+  .card-body {
+    padding: 12px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    flex: 1;
+    color: #1a1a1a;
+  }
+  .price {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e7a3c;
+    margin-bottom: 6px;
+  }
+  .price small { font-size: 12px; font-weight: 500; color: #777; }
+  .price-range {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+    border-top: 1px dashed #e0e0e0;
+    padding-top: 8px;
+  }
+  .price-range span { display: block; }
+
+  /* ==== CTA С ТЕЛЕФОНОМ ==== */
+  .cta-row {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #1e7a3c, #2a9b4f);
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 3px 10px rgba(30,122,60,.2);
+    margin: 4px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 14px;
+  }
+  .cta-row .cta-text {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .cta-row .cta-text small {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    opacity: .85;
+    margin-top: 2px;
+  }
+  .cta-row .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #1e7a3c;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .3px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    white-space: nowrap;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .cta-row .cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.18);
+  }
+
+  /* ==== БЛОК «ПРИМЕР РАБОТ» ==== */
+  .work-row {
+    grid-column: 1 / -1;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 22px rgba(0,0,0,.12);
+    margin: 6px 0;
+    background: #fff;
+    position: relative;
+    line-height: 0;
+  }
+  .work-row img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform .4s;
+  }
+  .work-row:hover img {
+    transform: scale(1.02);
+  }
+
+  /* ==== ПОДВАЛ ==== */
+  footer {
+    text-align: center;
+    padding: 24px 16px 10px;
+    color: #6b7770;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  footer a {
+    color: #1e7a3c;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  footer a:hover { text-decoration: underline; }
+  footer .portal-link {
+    max-width: 1400px;
+    margin: 20px auto 0;
+    padding: 0 24px;
+  }
+  footer .portal-link a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #dfe6e1;
+    border-left: 4px solid #0f5c8a;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: box-shadow .15s, border-color .15s;
+  }
+  footer .portal-link a:hover {
+    box-shadow: 0 4px 14px rgba(15,92,138,.12);
+    border-left-color: #1e7a3c;
+  }
+  footer .portal-link .icon { font-size: 16px; line-height: 1; }
+  footer .portal-link .sub {
+    color: #6b7770;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  /* ==== МОБИЛЬНАЯ АДАПТАЦИЯ ==== */
+  @media (max-width: 700px) {
+    header h1 { font-size: 20px; letter-spacing: 2px; }
+    header .phone-big { font-size: 20px; padding: 7px 18px; }
+
+    .portal-top { padding: 0 14px; margin-top: 12px; }
+    .portal-top a { font-size: 12px; padding: 9px 12px; gap: 8px; }
+    .portal-top .sub { display: none; }
+
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 14px 10px;
+    }
+    .card img { height: 130px; padding: 8px; }
+    .card-body { padding: 10px 10px 12px; }
+    .card-title { font-size: 12px; margin-bottom: 8px; }
+    .price { font-size: 16px; }
+    .price-range { font-size: 11px; line-height: 1.5; }
+
+    .cta-row { padding: 12px 12px; gap: 8px; }
+    .cta-row .cta-text { font-size: 12px; }
+    .cta-row .cta-text small { font-size: 10px; }
+    .cta-row .cta-btn { font-size: 12px; padding: 7px 14px; }
+
+    .work-row { border-radius: 10px; }
+    .work-row img { aspect-ratio: 4 / 3; }
+
+    footer .portal-link { padding: 0 14px; }
+    footer .portal-link a { font-size: 12px; padding: 9px 12px; gap: 8px; }
+    footer .portal-link .sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==== ШАПКА ==== -->
+<header>
+  <h1>СтройТех <span>Блок-хаус</span></h1>
+  <a class="phone-big" href="tel:+79281647988">+7 (928) 164-79-88</a>
+</header>
+
+<!-- ==== ТОНКАЯ ПЛАШКА НА ПОРТАЛ (ВВЕРХУ) ==== -->
+<div class="portal-top">
+  <a href="https://lex39039.github.io/rfrostov-portal/?clckid=36f7699f" target="_blank" rel="noopener">
+    <span class="icon">🏗️</span>
+    <span>Проверенные строительные компании Ростова-на-Дону</span>
+    <span class="sub">— на строительном портале</span>
+    <span class="arrow">→</span>
+  </a>
+</div>
+
+<div class="grid">
+
+  <!-- ============ КАРТОЧКИ ============ -->
+
+  <div class="card">
+    <img src="img/blok-haus_ral_8017_1.jpg" alt="Металлический сайдинг Блок-Хаус 0,5 мм RAL 8017 МАТ">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус 0,5 мм RAL 8017 МАТ</div>
+      <div class="price">410 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 410 ₽</span>
+        <span>101–200 м.п — 390 ₽</span>
+        <span>от 201 м.п — 370 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/blok-haus_ral_8017_0.jpg" alt="Металлический сайдинг Блок-Хаус 0,5 мм RAL 8017 РЕ">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус 0,5 мм RAL 8017 РЕ</div>
+      <div class="price">370 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 370 ₽</span>
+        <span>101–200 м.п — 345 ₽</span>
+        <span>от 201 м.п — 320 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/blok-haus_ral_8017.jpg" alt="Металлический сайдинг Блок-Хаус 0,45 мм RAL 8017 РЕ">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус 0,45 мм RAL 8017 РЕ</div>
+      <div class="price">350 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 350 ₽</span>
+        <span>101–200 м.п — 325 ₽</span>
+        <span>от 201 м.п — 300 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/kirpich.jpg" alt="Металлический сайдинг Блок-Хаус Кирпич 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Кирпич 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▼ Пример работ №1 (foto1.png) ▼ -->
+  <div class="work-row">
+    <img src="img/foto1.png" alt="Пример работ">
+  </div>
+  <!-- ▲ Пример работ №1 ▲ -->
+
+  <div class="card">
+    <img src="img/temnoe_derevo.jpg" alt="Металлический сайдинг Блок-Хаус Темное дерево 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Темное дерево 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/svetloe_derevo.jpg" alt="Металлический сайдинг Блок-Хаус Светлое дерево 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Светлое дерево 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/sayding_blockhaus_zolotoy_dub-min.jpg" alt="Металлический сайдинг Блок-Хаус Золотой дуб 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Золотой дуб 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/dymchyu_dub.jpg" alt="Металлический сайдинг Блок-Хаус Дымчатый дуб 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Дымчатый дуб 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▼ CTA №1 ▼ -->
+  <div class="cta-row">
+    <div class="cta-text">
+      Нужна помощь с выбором?
+      <small>Подскажем по цвету, толщине и объёму</small>
+    </div>
+    <a class="cta-btn" href="tel:+79281647988">Получить консультацию</a>
+  </div>
+  <!-- ▲ CTA №1 ▲ -->
+
+  <div class="card">
+    <img src="img/metallicheskiy_sayding_printech-min.jpg" alt="Металлический сайдинг Блок-Хаус Орех 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Орех 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/vintazh.svetlyy.jpg" alt="Металлический сайдинг Блок-Хаус Винтаж светлый 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Винтаж светлый 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/vintazh.temnyy.jpg" alt="Металлический сайдинг Блок-Хаус Винтаж темный 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Винтаж темный 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/kashtan.jpg" alt="Металлический сайдинг Блок-Хаус Каштан 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Каштан 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▼ Пример работ №2 (foto2.png) ▼ -->
+  <div class="work-row">
+    <img src="img/foto2.png" alt="Пример работ">
+  </div>
+  <!-- ▲ Пример работ №2 ▲ -->
+
+  <div class="card">
+    <img src="img/antichniy_dub.jpg" alt="Металлический сайдинг Блок-Хаус Античный дуб 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Античный дуб 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/likiy_kamen.jpg" alt="Металлический сайдинг Блок-Хаус Дикий камень 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Дикий камень 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/peschanik.jpg" alt="Металлический сайдинг Блок-Хаус Камень-песчаник 0,5 мм">
+    <div class="card-body">
+      <div class="card-title">Металлический сайдинг Блок-Хаус Камень-песчаник 0,5 мм</div>
+      <div class="price">445 ₽ <small>за м.п</small></div>
+      <div class="price-range">
+        <span>до 100 м.п — 445 ₽</span>
+        <span>101–200 м.п — 420 ₽</span>
+        <span>от 201 м.п — 395 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▼ CTA №2 ▼ -->
+  <div class="cta-row">
+    <div class="cta-text">
+      Не знаете, сколько нужно материала?
+      <small>Рассчитаем количество и стоимость по телефону</small>
+    </div>
+    <a class="cta-btn" href="tel:+79281647988">Получить консультацию</a>
+  </div>
+  <!-- ▲ CTA №2 ▲ -->
+
+  <!-- ▼ Пример работ №3 (foto3.png) ▼ -->
+  <div class="work-row">
+    <img src="img/foto3.png" alt="Пример работ">
+  </div>
+  <!-- ▲ Пример работ №3 ▲ -->
+
+  <!-- ============ /КАРТОЧКИ ============ -->
+
+</div>
+
+<!-- ==== ПОДВАЛ ==== -->
+<footer>
+  <div>
+    СтройТех Блок-хаус — металлический сайдинг ·
+    <a href="tel:+79281647988">+7 (928) 164-79-88</a>
+  </div>
+  <div class="portal-link">
+    <a href="https://lex39039.github.io/rfrostov-portal/?clckid=36f7699f" target="_blank" rel="noopener">
+      <span class="icon">🏗️</span>
+      <span>Проверенные строительные компании Ростова-на-Дону</span>
+      <span class="sub">— на строительном портале</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
